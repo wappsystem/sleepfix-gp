@@ -335,7 +335,7 @@
     <script>
         function F__ID(){
             //-------------------------------------
-            VmInclude:__COMPONENT__/module/form.v1.js
+            VmInclude:__COMPONENT__/f/form.01.js
             //-------------------------------------
             m.default_load=m.load;
             m.load=function(){
@@ -344,29 +344,30 @@
                 $(window).scrollTop(0);
             }
             //-------------------------------------
-            m.before_submit=function(record,dbv){
-                if((record.australia!='Yes' || record.between_18_65!='Yes' || record.english!='Yes' || record.smartphone!='Yes' || record.baby!='No' || record.shift!='No' || record.disease!='No' || record.mental_health!='No' || record.time_difference_2h!='No' || record.time_difference_1h!='No')
+            m.before_submit=function(data,index){
+                if((data.australia!='Yes' || data.between_18_65!='Yes' || data.english!='Yes' || data.smartphone!='Yes' || data.baby!='No' || data.shift!='No' || data.disease!='No' || data.mental_health!='No' || data.time_difference_2h!='No' || data.time_difference_1h!='No')
                     ||
-                    (parseInt(record.ISI_2)+parseInt(record.ISI_3)+parseInt(record.ISI_4)+parseInt(record.ISI_5)+parseInt(record.ISI_1a)+parseInt(record.ISI_1b)+parseInt(record.ISI_1c) <= 15)
+                    (parseInt(data.ISI_2)+parseInt(data.ISI_3)+parseInt(data.ISI_4)+parseInt(data.ISI_5)+parseInt(data.ISI_1a)+parseInt(data.ISI_1b)+parseInt(data.ISI_1c) <= 15)
                     ||
-                    (parseInt(record.phq_9) >0))
-                    {record.Eligible="No"}
-                else{record.Eligible="Yes"};
-                dbv.V1=parseInt(record.ISI_2)+parseInt(record.ISI_3)+parseInt(record.ISI_4)+parseInt(record.ISI_5)+parseInt(record.ISI_1a)+parseInt(record.ISI_1b)+parseInt(record.ISI_1c);
+                    (parseInt(data.phq_9) >0))
+                    {data.Eligible="No"}
+                else{data.Eligible="Yes"};
+                index.I1=parseInt(data.ISI_2)+parseInt(data.ISI_3)+parseInt(data.ISI_4)+parseInt(data.ISI_5)+parseInt(data.ISI_1a)+parseInt(data.ISI_1b)+parseInt(data.ISI_1c);
             }
             //-------------------------------------
-            m.after_add=function(record,dbv,res){
-                if(parseInt(record.phq_9) >0) {
-                    $vm.load_module_v2(m.prefix+'screen-failure-phq-9','',{});
+            m.after_insert=function(data,res){
+                if(parseInt(data.phq_9) >0) {
+                    $vm.load_module('screen-failure-phq-9','',{});
                 }
-                else if((record.australia!='Yes' || record.between_18_65!='Yes' || record.english!='Yes' || record.smartphone!='Yes' || record.baby!='No' || record.shift!='No' || record.disease!='No' || record.mental_health!='No' || record.time_difference_2h!='No' || record.time_difference_1h!='No')
+                else if((data.australia!='Yes' || data.between_18_65!='Yes' || data.english!='Yes' || data.smartphone!='Yes' || data.baby!='No' || data.shift!='No' || data.disease!='No' || data.mental_health!='No' || data.time_difference_2h!='No' || data.time_difference_1h!='No')
                     ||
-                    (parseInt(record.ISI_2)+parseInt(record.ISI_3)+parseInt(record.ISI_4)+parseInt(record.ISI_5)+parseInt(record.ISI_1a)+parseInt(record.ISI_1b)+parseInt(record.ISI_1c) <= 15))
+                    (parseInt(data.ISI_2)+parseInt(data.ISI_3)+parseInt(data.ISI_4)+parseInt(data.ISI_5)+parseInt(data.ISI_1a)+parseInt(data.ISI_1b)+parseInt(data.ISI_1c) <= 15))
                     {
-                    $vm.load_module_v2(m.prefix+'screen-failure-thank-you-page','',{});
+                    $vm.load_module('screen-failure-thank-you-page','',{});
                 }
                 else{
-                    $vm.load_module_v2(m.prefix+'pis-form','',{first_uid:res.uid});
+                  //$vm.load_module(notes,'',{task_name:m.task_name,task_uid:records[I].UID})
+                    $vm.load_module('pis-form','',{first_uid:res.result.ops[0].UID});
                 }
             }
             //--------------------------------------------------------

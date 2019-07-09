@@ -1,9 +1,9 @@
 (function(){
     var modules={
-        "screening-form":		            {url:"$H/m/screening-form.html",Table:"sleep-fix-screening"},
+        "screening-form":		            {url:"$H/m/screening-form.html",Table:"sleep-fix-gp-screening"},
         "pis-form":		                    {url:"$H/m/pis-form.html"},
-        "consent-form":		                {url:"$H/m/consent-form.html",Table:"sleep-fix-consent"},
-        "registration-form":		        {url:"$H/m/registration-form.html",Table:"sleep-fix-registration"},
+        "consent-form":		                {url:"$H/m/consent-form.html",Table:"sleep-fix-gp-consent"},
+        "registration-form":		        {url:"$H/m/registration-form.html",Table:"sleep-fix-gp-registration"},
         "screen-failure-phq-9":		        {url:"$H/m/screen-failure-phq-9.html"},
         "screen-failure-thank-you-page":	{url:"$H/m/screen-failure-thank-you-page.html"},
         "sleepfix-study-page-tmp":		    {url:"$H/m/sleepfix-study-page-tmp.html"},

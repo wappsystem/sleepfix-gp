@@ -173,7 +173,7 @@
     <script>
         function F__ID(){
             //-------------------------------------
-            VmInclude:__COMPONENT__/module/form.v1.js
+            VmInclude:__COMPONENT__/f/form.01.js
             //-------------------------------------
             m.load=function(){
                 m.input=$vm.vm['__ID'].input; if(m.input==undefined) m.input={};
@@ -190,7 +190,7 @@
             })
             //-------------------------------------
             $('#submit__ID').on('click',function(){
-                $vm.load_module_v2(m.prefix+"consent-form",'',{first_uid:m.input.first_uid})
+                $vm.load_module("consent-form",'',{first_uid:m.input.first_uid})
             })
             //-------------------------------------
         }

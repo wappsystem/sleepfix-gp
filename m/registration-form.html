@@ -64,26 +64,26 @@
     <script>
       function F__ID(){
           //-------------------------------------
-          VmInclude:__COMPONENT__/module/form.v1.js
+          VmInclude:__COMPONENT__/f/form.01.js
           //m.add_anonymous=1;
           //-------------------------------------
-          m.before_submit=function(record,dbv){
-              if(record.Email!=record.Email_Confirmation){
+          m.before_submit=function(data,index){
+              if(data.Email!=data.Email_Confirmation){
                   $('#submit__ID').show();
                   $vm.alert("Email and confirmation email not same");
                   return false;
               }
-              dbv.S2=record.Email;
-              if(record.Password==""){ dbv.S3=record.Password=$vm.vm_password(8,false); record.Password;}
-              //if(record.Start_Date==""){ dbv.DT1=record.Start_Date=$vm.date_to_string_yyyymmdd(new Date());}
-              dbv.V1=0; if(record.SMS=='on') dbv.V1=1;
-              dbv.PUID=m.input.first_uid;
+              index.I4=data.Email;
+              if(data.Password==""){ index.I5=data.Password=$vm.vm_password(8,false); data.Password;}
+              //if(data.Start_Date==""){ index.DT1=data.Start_Date=$vm.date_to_string_yyyymmdd(new Date());}
+              index.I3=0; if(data.SMS=='on') index.I3=1;
+              index.I2=m.input.first_uid;
 
           }
           //-------------------------------------
-          m.after_add=function(record,dbv,res){
+          m.after_insert=function(data,res){
               //We should send email here
-             $vm.load_module_v2(m.prefix+'sleepfix-study-page','',{});
+             $vm.load_module('sleepfix-study-page','',{});
               //$vm.load_module_v2(m.prefix+'sleepfix-study-page-tmp','',{});
           }
           $(this).scrollTop(0);
@@ -109,6 +109,7 @@
               custom_field_process();
           }
           //-------------------------------------
+ /*
           var custom_field_process=function(){
               $('#F__ID div[data-custom=1]').each(function(){
                   var field=$(this).attr('data-id');
@@ -158,7 +159,7 @@
                   }
               })
           }
-
+*/
       }
       </script>
       <style>

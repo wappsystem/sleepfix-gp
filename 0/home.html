@@ -67,8 +67,9 @@
 		  })
 		  //-------------------------------------
 		  $('#btn2__ID').on('click',function(){
-			  alert("Not ready yet.");
-			 $vm.load_module_v2(prefix+'screening-form','',{});
+			  //alert("Not ready yet.");
+			  $vm.load_module('screening-form',$vm.root_layout_content_slot,{})
+			// $vm.load_module_v2(prefix+'screening-form','',{});
 		  })
 		  //-------------------------------------
 		  $('#test__ID').on('click',function(){

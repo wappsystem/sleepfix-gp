@@ -64,7 +64,7 @@
     <script>
         function F__ID(){
             //-------------------------------------
-            VmInclude:__COMPONENT__/module/form.v1.js
+            VmInclude:__COMPONENT__/f/form.01.js
             //m.add_anonymous=1;
             //-------------------------------------
             m.load=function(){
@@ -86,12 +86,12 @@
                 else {$('#submit__ID').hide();$('#consent_no_text__ID').show();}
             })
             //-------------------------------
-            m.before_submit=function(record,dbv){
-                dbv.PUID=m.input.first_uid;
+            m.before_submit=function(data,index){
+                index.I2=m.input.first_uid;
             }
             //-------------------------------------
-            m.after_add=function(record,dbv,res){
-                $vm.load_module_v2(m.prefix+'registration-form','',{first_uid:m.input.first_uid});
+            m.after_insert=function(data,res){
+                $vm.load_module('registration-form','',{first_uid:m.input.first_uid});
             }
             //--------------------------------------------------------
             $('#D__ID').css('min-height',$vm.min_height);
